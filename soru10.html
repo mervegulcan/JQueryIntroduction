@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <label>Company Name</label> <input type="text" id="companyName"><br>
+    <label>Contact Title</label> <input type="text" id="contactTitle"><br>
+    <label>Contact Name</label>
+    <input type="text" id="contactName"><br>
+    <label>Adres Bilgileri</label><br>
+    <div>
+
+        <!-- <label>City</label>
+        <select id="city">
+            <option value="1">dgfdgf</option>
+            <option value="2">fdsffdfds</option>
+            <option value="3">dgfdsfgf</option>
+
+        </select> -->
+
+    </div>
+    <div>
+
+        <label >Region</label>
+        <select id="region">
+            <option value="1">asdsafg</option>
+            <option value="2">asfsfsf</option>
+            <option value="3">asfadgdg</option>
+
+        </select>
+
+    </div>
+    <div>
+
+        <label >Country</label>
+        <select id="country">
+            <option value="1">qwrewte</option>
+            <option value="2">qwertews</option>
+            <option value="3">qwetreytre</option>
+
+        </select>
+
+    </div>
+    <div>
+
+        <label >Postal Code</label>
+        <select id="postalcode">
+            <option value="1">retyıuytr</option>
+            <option value="2">rtyujhgf</option>
+            <option value="3">reytyujngbf</option>
+
+        </select>
+        <button>Supplier Ekle</button>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    $("button").click(function () {
+
+        //let supCity = $("#city").val();
+        let supRegion = $("select #region").val();
+        let supCountry = $("#country").val();
+        let supPostalCode = $("#postalCode").val();
+
+
+        let newSupplier = new Object();
+        newSupplier.companyName = $("#companyName").val();
+        newSupplier.contactName=$("contactName")
+        newSupplier.contactTitle=$("contactTitle").val();
+        //newSupplier.address.city=supCity;
+        newSupplier.address.region=supRegion;
+        newSupplier.address.country=supCountry;
+        newSupplier.address.postalCode=supPostalCode;
+
+        $.ajax({
+url:'https://northwind.vercel.app/api/suppliers',
+type:"POST",
+data:newSupplier,
+success:function(){
+    console.log("işlem başarılı");
+},
+error:function(){
+    console.log("bir hata oluştu");
+}
+
+        })
+
+
+    })
+
+</script>

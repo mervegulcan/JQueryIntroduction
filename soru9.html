@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <label for="">Company Name:</label><input type="text" id="companyName">
+    <label for="">Contact Title:</label><input type="text" id="contactTitle">
+    <label for="">Contact Name:</label><input type="text" id="contactName">
+    <button> Veri Ekle</button>
+</body>
+</html>
+
+<script>
+
+
+$("button").click(function () {
+    
+ let newSupplier = new Object();
+ newSupplier.companyName =$('#companyName').val();
+ newSupplier.contactName =$('#contactName').val();
+ newSupplier.contactTitle =$('#contactTitle').val();
+
+
+    $.ajax({
+        url:'https://northwind.vercel.app/api/suppliers',
+        type:'POST',
+        data :newSupplier,
+        success: function (){
+            console.log("İşlem Başarılı");
+         
+            
+        },
+        error:function(){
+            console.log('bir hata oluştu');
+        }
+
+
+        
+    })
+
+})
+</script>
